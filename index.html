@@ -1,150 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Rita Akinyi | Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ✅ Smooth Scroll -->
+  <meta charset="UTF-8" />
+  <title>Contact Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       font-family: Arial, sans-serif;
-      background: #f0f4f8;
-      margin: 0;
-      padding: 0;
-      color: #333;
-    }
-
-    header {
-      background-color: #0077cc;
-      color: white;
-      padding: 30px 15px;
+      background-color: #fdf6f0;
+      padding: 20px;
       text-align: center;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
+    h1 {
+      color: #0077cc;
     }
 
-    h2 {
-      border-bottom: 2px solid #0077cc;
-      padding-bottom: 10px;
-      font-size: 20px;
-    }
-
-    .project {
-      background: white;
-      margin-top: 20px;
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      background: #fff;
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
-    footer {
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
       background-color: #0077cc;
       color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 40px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .error {
+      color: red;
       font-size: 14px;
+      text-align: left;
     }
 
-    a {
-      color: #0077cc;
-      text-decoration: none;
+    .success {
+      color: green;
+      font-weight: bold;
+      margin-top: 15px;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .back-link {
+      margin-top: 20px;
     }
 
-    /* ✅ Mobile Styles */
-    @media (max-width: 600px) {
-      .container {
-        padding: 0 15px;
-      }
-
-      header h1 {
-        font-size: 24px;
-      }
-
-      h2 {
-        font-size: 18px;
-      }
-
-      .project h3 {
-        font-size: 16px;
-      }
-
-      .project p {
-        font-size: 14px;
-      }
+    .back-link a button {
+      margin-top: 10px;
+      background-color: #e67e22;
     }
   </style>
-
-  <!-- ✅ Font Awesome Icons -->
-  <script src="https://kit.fontawesome.com/3f72c3f20c.js" crossorigin="anonymous"></script>
-
-  <!-- ✅ AOS Animation Library -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
 </head>
 <body>
 
-<header>
-  <h1>Rita Akinyi</h1>
-  <p>Junior Web Developer | HTML • CSS • JavaScript</p>
-</header>
+  <h1>📬 Contact Us</h1>
 
-<div class="container" data-aos="fade-up">
-  <h2>👋 About Me</h2>
-  <p>Hello! I’m a self-taught software developer currently learning web development. I enjoy building small interactive websites and learning new tech skills every day!</p>
+  <form id="contactForm" onsubmit="return validateForm()">
+    <input type="text" id="name" placeholder="Your Name" />
+    <div id="nameError" class="error"></div>
 
-  <h2>💻 Projects</h2>
-  <div class="project" data-aos="fade-right">
-    <h3>📝 To-Do App</h3>
-    <p>A simple to-do list built with JavaScript and localStorage.</p>
-    <a href="todo-list.html" target="_blank">View Project</a>
+    <input type="email" id="email" placeholder="Your Email" />
+    <div id="emailError" class="error"></div>
+
+    <textarea id="message" rows="5" placeholder="Your Message"></textarea>
+    <div id="messageError" class="error"></div>
+
+    <button type="submit">Send Message</button>
+    <div id="formSuccess" class="success"></div>
+  </form>
+
+  <div class="back-link">
+    <a href="portfolio.html">
+      <button>🔙 View My Portfolio</button>
+    </a>
   </div>
 
-  <div class="project" data-aos="fade-left">
-    <h3>🎨 Favorite Things Page</h3>
-    <p>My very first webpage, made with HTML, CSS, and some JavaScript.</p>
-    <a href="index.html" target="_blank">View Project</a>
-  </div>
+  <script>
+    function validateForm() {
+      document.getElementById('nameError').innerText = '';
+      document.getElementById('emailError').innerText = '';
+      document.getElementById('messageError').innerText = '';
+      document.getElementById('formSuccess').innerText = '';
 
- <h2>📫 Contact</h2>
-<p>Email: ritaakinyi12@gmail.com</p>
+      let valid = true;
 
-<form action="https://formspree.io/f/xjkrdadl" method="POST">
-  <label for="name">Name</label><br>
-  <input type="text" id="name" name="name" required><br><br>
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
 
-  <label for="email">Email</label><br>
-  <input type="email" id="email" name="_replyto" required><br><br>
+      if (name === '') {
+        document.getElementById('nameError').innerText = 'Please enter your name.';
+        valid = false;
+      }
 
-  <label for="message">Message</label><br>
-  <textarea id="message" name="message" rows="5" required></textarea><br><br>
+      if (email === '') {
+        document.getElementById('emailError').innerText = 'Please enter your email.';
+        valid = false;
+      } else if (!/\S+@\S+\.\S+/.test(email)) {
+        document.getElementById('emailError').innerText = 'Please enter a valid email.';
+        valid = false;
+      }
 
-  <button type="submit">Send Message</button>
-</form>
+      if (message === '') {
+        document.getElementById('messageError').innerText = 'Please enter a message.';
+        valid = false;
+      }
 
+      if (valid) {
+        document.getElementById('formSuccess').innerText = 'Message sent successfully!';
+        document.getElementById('contactForm').reset();
+      }
 
-<footer>
-  &copy; 2025 Rita Akinyi. All rights reserved.
-</footer>
-
-<!-- ✅ AOS Script -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
+      return false;
+    }
+  </script>
 
 </body>
 </html>
