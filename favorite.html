@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Favorite Things</title>
+  <style>
+    /* Body styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #c2e9fb;
+      color: #222;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Container to hold content with max width */
+    .container {
+      max-width: 800px;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #0077cc;
+      text-align: center;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 2px #a1c4fd;
+    }
+
+    h2 {
+      color: #ff5e62;
+      margin-top: 30px;
+      border-bottom: 2px solid #ff5e62;
+      padding-bottom: 5px;
+    }
+
+    ul, ol {
+      background-color: #fefefe;
+      padding: 15px 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    /* Link styles */
+    a {
+      color: #ff5e62;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #0077cc;
+      text-decoration: underline;
+    }
+
+    /* Image styles */
+    img {
+      display: block;
+      margin: 25px auto;
+      max-width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Footer text */
+    p.footer {
+      text-align: center;
+      font-style: italic;
+      color: #555;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>My Favorite Things</h1>
+
+    <h2>🍲 Favorite Foods</h2>
+    <ul>
+      <li>Spicy food</li>
+      <li>Nyama choma</li>
+      <li>French fries</li>
+    </ul>
+
+    <h2>🎵 Favorite Music</h2>
+    <p>I enjoy listening to blues, R&B, and worship music.</p>
+
+    <h2>🎬 Favorite Movies or Shows</h2>
+    <ol>
+      <li>Sweet Home</li>
+      <li>All of Us Are Dead</li>
+      <li>The Penthouse</li>
+    </ol>
+<p id="changeText">This text will change when you click the button.</p>
+<button onclick="changeMyText()">Change the Text</button>
+
+    <h2>🌍 Favorite Website</h2>
+    <p>One website I visit often is 
+      <a href="https://www.dailymotion.com" target="_blank">dailymotion</a>.
+    </p>
+
+    <h2>🖼️ A Picture I Like</h2>
+<img src="yaoguanyu.png" alt="yaoguanyu" width="300">
+
+<p class="footer">Thanks for visiting my favorite things page!</p>
+</div>
+
+<!-- ✅ New paragraph for toggle -->
+<p id="changeText">This text will change when you click the button.</p>
+
+<!-- ✅ Buttons -->
+<button onclick="toggleText()">Change the Text</button>
+<button onclick="showMessage()">Click me!</button>
+<button onclick="changeBackground()">Change Background</button>
+
+
+<!-- ✅ JavaScript -->
+<script>
+  function showMessage() {
+    alert("Hello there! You're learning JavaScript 🎉");
+  }
+
+  let toggled = false;
+
+  function toggleText() {
+    const paragraph = document.getElementById("changeText");
+
+    if (!toggled) {
+      paragraph.innerText = "🎉 You just changed this text with JavaScript!";
+      toggled = true;
+    } else {
+      paragraph.innerText = "This text will change when you click the button.";
+      toggled = false;
+    }
+  }
+
+  let bgToggled = false;
+
+  function changeBackground() {
+    if (!bgToggled) {
+      document.body.style.backgroundColor = "#f9f871"; // Yellow
+      bgToggled = true;
+    } else {
+      document.body.style.backgroundColor = "#c2e9fb"; // Light blue
+      bgToggled = false;
+    }
+  }
+let name = "Rita";
+let favoriteFood = "Nyama choma";
+
+alert("Hi, my name is " + name + " and I love eating " + favoriteFood + "!");
+let number1 = 10;
+let number2 = 5;
+
+let sum = number1 + number2;
+let product = number1 * number2;
+
+alert("The sum is " + sum + " and the product is " + product + ".");
+  let age = 20;
+
+  if (age >= 18) {
+    alert("You’re old enough to drive!");
+  } else {
+    alert("Sorry, you’re too young to drive.");
+  }
+
+</script>
+
+
+</body>
+</html>
